@@ -1,4 +1,4 @@
-# TheRaccoonBytes
+# The Raccoon Bytes
 
 Repository for experiments and videos for my stuff that I share.
 
