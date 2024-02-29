@@ -10,4 +10,4 @@ Repository for experiments and videos for my stuff that I share.
 ## Demystifying LLMS From Zero to Raccoon-Hero, with Azure, DotNet, Semantic-Kernel
 
 * [Intro](https://www.youtube.com/watch?v=lBbRhekdtNw&t=12s)
-* [Episode 1: Creating a CLI](https://www.youtube.com/watch?v=UQleZ68EOZQ)https://www.youtube.com/watch?v=UQleZ68EOZQ)
+* [Episode 1: Creating a CLI](https://www.youtube.com/watch?v=UQleZ68EOZQ)
