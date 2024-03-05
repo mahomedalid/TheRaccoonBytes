@@ -1,6 +1,20 @@
 ﻿using System.CommandLine.Parsing;
 using System.CommandLine;
 using System;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
+
+var serviceCollection = new ServiceCollection();
+
+ConfigureServices(serviceCollection, args);
+
+using var serviceProvider = serviceCollection.BuildServiceProvider();
+
+var debugOption = new Option<bool>("--debug")
+{
+    Description = "Enable debug logging"
+};
 
 var personaOption = new Option<string>("--persona")
 {
@@ -22,15 +36,21 @@ var styleOption = new Option<string>("--style")
 
 var rootCommand = new RootCommand();
 
+rootCommand.AddGlobalOption(debugOption);
+
 var createPostCommand = new Command("create-post", "Create new post");
 
 createPostCommand.AddOption(personaOption);
 createPostCommand.AddOption(topicOption);
 createPostCommand.AddOption(styleOption);
 
+var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
+
 createPostCommand.SetHandler((persona, topic, option) =>
 {
-    Console.WriteLine($"Creating new post with persona: {persona}, topic: {topic}, style: {option}");
+    var logger = loggerFactory.CreateLogger<Program>();
+
+    logger?.LogDebug($"Command requested for {persona} {topic} {option}");
 
     throw new NotImplementedException();
 }, personaOption, topicOption, styleOption);
@@ -40,3 +60,21 @@ rootCommand.AddCommand(createPostCommand);
 var result = await rootCommand.InvokeAsync(args);
 
 return result;
+
+static void ConfigureServices(ServiceCollection services, string[] args)
+{
+    services.AddLogging(builder =>
+    {
+        builder.AddSimpleConsole(options =>
+        {
+            options.IncludeScopes = true;
+            options.SingleLine = true;
+            options.TimestampFormat = "hh:mm:ss ";
+        });
+
+        if (args.Any("--debug".Contains))
+        {
+            builder.SetMinimumLevel(LogLevel.Debug);
+        }
+    });
+}
