@@ -10,5 +10,6 @@ Repository for experiments and videos for my stuff that I share.
 ## Demystifying LLMS From Zero to Raccoon-Hero, with Azure, DotNet, Semantic-Kernel
 
 * [Intro](https://www.youtube.com/watch?v=lBbRhekdtNw&t=12s)
-* [Episode 1: Creating a CLI](https://www.youtube.com/watch?v=UQleZ68EOZQ) - [Code](https://github.com/mahomedalid/TheRaccoonBytes/tree/main/llm-with-dotnet/PostGenerator)
-* [Episode 2: Logging and Dependency Injection](https://www.youtube.com/watch?v=UQleZ68EOZQ) - [Code](https://github.com/mahomedalid/TheRaccoonBytes/tree/main/llm-with-dotnet/PostGenerator)
+* [Episode 1: Creating a CLI](https://www.youtube.com/watch?v=UQleZ68EOZQ) - [Code EP1](https://github.com/mahomedalid/TheRaccoonBytes/tree/ep1/llm-with-dotnet)
+* [Episode 2: Logging and Dependency Injection](https://www.youtube.com/watch?v=UQleZ68EOZQ) - [Code EP2](https://github.com/mahomedalid/TheRaccoonBytes/tree/ep2/llm-with-dotnet)
+
