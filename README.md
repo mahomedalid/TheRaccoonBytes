@@ -11,3 +11,4 @@ Repository for experiments and videos for my stuff that I share.
 
 * [Intro](https://www.youtube.com/watch?v=lBbRhekdtNw&t=12s)
 * [Episode 1: Creating a CLI](https://www.youtube.com/watch?v=UQleZ68EOZQ) - [Code](https://github.com/mahomedalid/TheRaccoonBytes/tree/main/llm-with-dotnet/PostGenerator)
+* [Episode 2: Logging and Dependency Injection](https://www.youtube.com/watch?v=UQleZ68EOZQ) - [Code](https://github.com/mahomedalid/TheRaccoonBytes/tree/main/llm-with-dotnet/PostGenerator)
