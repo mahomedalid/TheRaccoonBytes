@@ -4,6 +4,8 @@ using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
+using Microsoft.SemanticKernel;
+using PostGenerator;
 
 var serviceCollection = new ServiceCollection();
 
@@ -46,13 +48,17 @@ createPostCommand.AddOption(styleOption);
 
 var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
 
-createPostCommand.SetHandler((persona, topic, option) =>
+createPostCommand.SetHandler(async (persona, topic, option) =>
 {
     var logger = loggerFactory.CreateLogger<Program>();
 
     logger?.LogDebug($"Command requested for {persona} {topic} {option}");
 
-    throw new NotImplementedException();
+    var postGeneratorService = serviceProvider.GetRequiredService<PostGeneratorService>();
+
+    var result = await postGeneratorService.GeneratePost(persona, topic, option);
+
+    logger?.LogInformation(result);
 }, personaOption, topicOption, styleOption);
 
 rootCommand.AddCommand(createPostCommand);
@@ -76,5 +82,20 @@ static void ConfigureServices(ServiceCollection services, string[] args)
         {
             builder.SetMinimumLevel(LogLevel.Debug);
         }
+    }).AddSingleton((sp) => {
+        var builder = Kernel.CreateBuilder();
+
+        builder.AddAzureOpenAIChatCompletion(
+                  Environment.GetEnvironmentVariable("AZURE_OPENAI_MODEL")!,
+                  Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")!,
+                  Environment.GetEnvironmentVariable("AZURE_OPENAI_KEY")!);
+
+        return builder.Build();
+    }).AddSingleton((sp) => {
+        var kernel = sp.GetRequiredService<Kernel>();
+
+        var kernelFunctions = kernel.CreatePluginFromPromptDirectory("_prompts");
+
+        return new PostGeneratorService(kernel, kernelFunctions["generatePost"]);
     });
 }

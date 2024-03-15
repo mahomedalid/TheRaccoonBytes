@@ -1,0 +1,6 @@
+Generate a short tweet ready to be published given a writting style, persona, and topic.
+You should include hashtags at the end.
+
+Style: {{$Style}}
+Persona: {{$Persona}}
+Topic: {{$Topic}}

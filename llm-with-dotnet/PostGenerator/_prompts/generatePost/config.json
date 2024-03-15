@@ -1,0 +1,28 @@
+{
+    "schema": 1,
+    "type": "completion",
+    "description": "Post generation",
+    "completion": {
+      "max_tokens": 5000
+    },
+    "input": {
+      "parameters": [
+        {
+          "name": "persona",
+          "description": "Persona",
+          "defaultValue": ""
+        },
+        {
+          "name": "style",
+          "description": "Style",
+          "defaultValue": ""
+        },
+        {
+          "name": "topic",
+          "description": "Topic",
+          "defaultValue": ""
+        }
+      ]
+    },
+    "default_backends": []
+}
