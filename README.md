@@ -12,4 +12,6 @@ Repository for experiments and videos for my stuff that I share.
 * [Intro](https://www.youtube.com/watch?v=lBbRhekdtNw&t=12s)
 * [Episode 1: Creating a CLI](https://www.youtube.com/watch?v=UQleZ68EOZQ) - [Code EP1](https://github.com/mahomedalid/TheRaccoonBytes/tree/ep1/llm-with-dotnet)
 * [Episode 2: Logging and Dependency Injection](https://www.youtube.com/watch?v=UQleZ68EOZQ) - [Code EP2](https://github.com/mahomedalid/TheRaccoonBytes/tree/ep2/llm-with-dotnet)
+* [Episode 3: Semantic Kernel Magic Bits](https://www.youtube.com/watch?v=DOCyf7Qj6CI) - [Code EP2](https://github.com/mahomedalid/TheRaccoonBytes/tree/ep3/llm-with-dotnet)
+
 
