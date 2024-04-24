@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.SemanticKernel;
-using PostGenerator;
+using PostGeneratorSdk;
 
 var serviceCollection = new ServiceCollection();
 
@@ -40,7 +40,7 @@ var rootCommand = new RootCommand();
 
 rootCommand.AddGlobalOption(debugOption);
 
-var createPostCommand = new Command("create-post", "Create new post");
+var createPostCommand = new Command("createpart-post", "Create new post");
 
 createPostCommand.AddOption(personaOption);
 createPostCommand.AddOption(topicOption);

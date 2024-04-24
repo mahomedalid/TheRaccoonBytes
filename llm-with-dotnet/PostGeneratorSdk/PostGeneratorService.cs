@@ -1,12 +1,18 @@
 using Microsoft.SemanticKernel;
 
-namespace PostGenerator;
+namespace PostGeneratorSdk;
 
 public class PostGeneratorService
 {
     private readonly KernelFunction _promptFunction;
 
     private readonly Kernel _kernel;
+
+    public static PostGeneratorService Create(Kernel kernel)
+    {
+        string promptTemplate = EmbeddedResource.Read("_prompts.generatePost.skprompt.txt");
+        return new PostGeneratorService(kernel, kernel.CreateFunctionFromPrompt(promptTemplate));
+    }
 
     public PostGeneratorService(Kernel kernel, KernelFunction promptFunction)
     {
